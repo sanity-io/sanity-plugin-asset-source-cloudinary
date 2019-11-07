@@ -18,6 +18,6 @@ export type CloudinaryAsset = {
 }
 
 export interface CloudinaryMediaLibrary {
-  show: (config?: { asset: any }) => void
+  show: (config?: { asset: any, folder: any }) => void
   hide: () => void
 }

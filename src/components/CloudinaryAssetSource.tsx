@@ -4,8 +4,8 @@ import Dialog from 'part:@sanity/components/dialogs/fullscreen'
 import Spinner from 'part:@sanity/components/loading/spinner'
 import pluginConfig from 'config:asset-source-cloudinary'
 
-import {Asset, AssetDocument, CloudinaryAsset, CloudinaryMediaLibrary} from '../types'
-import {loadCloudinary, decodeFilename, encodeFilename} from '../utils'
+import { Asset, AssetDocument, CloudinaryAsset, CloudinaryMediaLibrary } from '../types'
+import { loadCloudinary, decodeFilename, encodeFilename } from '../utils'
 import styles from './CloudinaryAssetSource.css'
 
 declare global {
@@ -61,8 +61,7 @@ export default class CloudinaryAssetSource extends React.Component<Props, State>
         insertHandler: this.handleSelect
       }
     )
-    const iframe: ChildNode | null =
-      this.contentRef.current && this.contentRef.current.firstChild
+    const iframe: ChildNode | null = this.contentRef.current && this.contentRef.current.firstChild
     if (iframe && iframe instanceof HTMLIFrameElement) {
       iframe.onload = () => {
         this.setState({ loadingMessage: null })
@@ -74,8 +73,17 @@ export default class CloudinaryAssetSource extends React.Component<Props, State>
         ) {
           asset = decodeFilename(firstSelectedAsset.originalFilename)
         }
+        const folder = asset
+          ? {
+              path: asset.public_id
+                .split('/')
+                .slice(0, -1)
+                .join('/'),
+              resource_type: 'image'
+            }
+          : { path: '', resource_type: 'image' }
         if (this.library && this.contentRef.current) {
-          this.library.show({ asset })
+          this.library.show({ folder, asset })
           this.contentRef.current.style.visibility = 'visible'
         }
       }
@@ -86,9 +94,13 @@ export default class CloudinaryAssetSource extends React.Component<Props, State>
     if (!this.library) {
       return
     }
+    const imageAssets = assets.filter((asset: CloudinaryAsset) => asset.resource_type === 'image')
+    if (imageAssets.length === 0) {
+      throw new Error('The selection did not contain any images.')
+    }
     this.library.hide()
     this.props.onSelect(
-      assets.map((asset: CloudinaryAsset) => ({
+      imageAssets.map((asset: CloudinaryAsset) => ({
         kind: 'url',
         value: asset.secure_url,
         metadata: {
@@ -109,7 +121,7 @@ export default class CloudinaryAssetSource extends React.Component<Props, State>
     return (
       <Dialog title="Select image from Cloudinary" onClose={this.handleClose} isOpen>
         {this.state.loadingMessage && (
-            <Spinner fullscreen center message={this.state.loadingMessage} />
+          <Spinner fullscreen center message={this.state.loadingMessage} />
         )}
         <div
           style={{ visibility: 'hidden' }}
