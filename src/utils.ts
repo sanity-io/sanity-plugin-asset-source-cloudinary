@@ -20,17 +20,21 @@ export function loadCloudinary(callback: () => void) {
   return true
 }
 
-export function encodeFilename(asset: CloudinaryAsset) {
+export function encodeLabel(asset: CloudinaryAsset) {
   const { resource_type, public_id, type } = asset
-  return `${btoa(JSON.stringify({ resource_type, public_id, type }))}.${asset.format}`
+  return JSON.stringify({ resource_type, public_id, type })
 }
 
-export function decodeFilename(filename: string): CloudinaryAsset {
-  let filenameDecoded
+export function encodeFilename(asset: CloudinaryAsset) {
+  return `${asset.public_id.split('/').slice(-1)[0]}.${asset.format}`
+}
+
+export function decodeLabel(label: string): CloudinaryAsset {
+  let labelDecoded
   try {
-    filenameDecoded = JSON.parse(atob(filename.split('.')[0]))
+    labelDecoded = JSON.parse(label)
   } catch (err) {
     // Do nothing
   }
-  return filenameDecoded
+  return labelDecoded
 }

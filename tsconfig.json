@@ -35,6 +35,9 @@
       "part:@sanity/components/dialogs/fullscreen": [
         "./node_modules/@sanity/components/lib/dialogs/FullscreenDialog.js"
       ],
+      "part:@sanity/components/dialogs/fullscreen-style": [
+        "./node_modules/@sanity/components/lib/dialogs/styles/FullscreenDialog.css"
+      ],
       "part:@sanity/base/close-icon": [
         "./node_modules/@sanity/base/lib/components/icons/CloseIcon.js"
       ],

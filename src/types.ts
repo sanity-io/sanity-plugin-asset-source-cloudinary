@@ -1,11 +1,12 @@
 export type Asset = {
   kind: 'url' | 'base64' | 'file' | 'assetDocumentId'
   value: string | File
-  metadata?: { filename?: string }
+  options?: { originalFilename?: string; label?: string }
 }
 
 export type AssetDocument = {
   _id: string
+  label?: string
   originalFilename?: string
 }
 
@@ -18,6 +19,6 @@ export type CloudinaryAsset = {
 }
 
 export interface CloudinaryMediaLibrary {
-  show: (config?: { asset: any, folder: any }) => void
+  show: (config?: { asset: any; folder: any }) => void
   hide: () => void
 }
