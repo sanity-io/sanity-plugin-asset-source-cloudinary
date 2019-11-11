@@ -105,7 +105,7 @@ export default class CloudinaryAssetSource extends React.Component<Props, State>
         value: asset.secure_url,
         options: {
           label: encodeLabel(asset),
-          originalFilename: encodeFilename(asset)
+          filename: encodeFilename(asset)
         }
       }))
     )

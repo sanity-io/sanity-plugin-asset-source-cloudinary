@@ -1,7 +1,7 @@
 export type Asset = {
   kind: 'url' | 'base64' | 'file' | 'assetDocumentId'
   value: string | File
-  options?: { originalFilename?: string; label?: string }
+  options?: { filename?: string; label?: string }
 }
 
 export type AssetDocument = {
