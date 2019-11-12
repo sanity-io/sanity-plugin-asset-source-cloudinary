@@ -5,7 +5,7 @@
   },
   "parts": [
     {
-      "name": "part:@sanity/form-builder/input/image/asset-source-cloudinary",
+      "name": "part:sanity-plugin/image-asset-source-cloudinary",
       "implements": "part:@sanity/form-builder/input/image/asset-source",
       "path": "index.js"
     }
