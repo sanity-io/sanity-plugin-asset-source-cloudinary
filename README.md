@@ -1,5 +1,14 @@
 # Sanity Asset Source: Cloudinary
 
+## Installation
+
+`sanity install asset-source-cloudinary`
+
+Edit the config file found in `./config/asset-source-cloudinary.json` with your Cloudinary Cloud name and API key.
+
+You can find these in the Cloudinary console: https://cloudinary.com/console
+
+
 ## Developing on this module
 
 To simulate using your development version as a real module inside a studio, you can do the following:

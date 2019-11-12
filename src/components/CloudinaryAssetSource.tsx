@@ -25,6 +25,7 @@ type Props = {
 
 type State = {
   loadingMessage: string | null
+  hasConfig: boolean
 }
 
 export default class CloudinaryAssetSource extends React.Component<Props, State> {
@@ -33,7 +34,8 @@ export default class CloudinaryAssetSource extends React.Component<Props, State>
   }
 
   state = {
-    loadingMessage: 'Loading Cloudinary Media Libary'
+    loadingMessage: 'Loading Cloudinary Media Libary',
+    hasConfig: false
   }
 
   private contentRef = React.createRef<HTMLDivElement>()
@@ -43,7 +45,11 @@ export default class CloudinaryAssetSource extends React.Component<Props, State>
   private domId = Date.now()
 
   componentDidMount() {
-    loadCloudinary(this.setupMediaLibrary)
+    const hasConfig = !!(pluginConfig.cloudName && pluginConfig.apiKey)
+    if (hasConfig) {
+      loadCloudinary(this.setupMediaLibrary)
+    }
+    this.setState({ hasConfig })
   }
 
   private setupMediaLibrary = () => {
@@ -66,11 +72,7 @@ export default class CloudinaryAssetSource extends React.Component<Props, State>
       iframe.onload = () => {
         this.setState({ loadingMessage: null })
         let asset
-        if (
-          selectionType === 'single' &&
-          firstSelectedAsset &&
-          firstSelectedAsset.sourceId
-        ) {
+        if (selectionType === 'single' && firstSelectedAsset && firstSelectedAsset.sourceId) {
           asset = decodeSourceId(firstSelectedAsset.sourceId)
         }
         const folder = asset
@@ -119,18 +121,40 @@ export default class CloudinaryAssetSource extends React.Component<Props, State>
     this.props.onClose()
   }
 
+  renderConfigWarning() {
+    return (
+      <div>
+        <h2>Missing configuration</h2>
+        <p>You must first configure the plugin with your Cloudinary credentials</p>
+        <p>
+          Edit the <code>./config/asset-source-cloudinary.json</code> file in your Sanity Studio
+          folder.
+        </p>
+        <p>
+          You can get your credentials by visting the{' '}
+          <a href="https://cloudinary.com/console" rel="noopener noreferrer" target="_blank">
+            Cloudinary console
+          </a>{' '}
+          and get your Cloud name and API key.
+        </p>
+      </div>
+    )
+  }
+
   render() {
+    const { hasConfig, loadingMessage } = this.state
     return (
       <Dialog title="Select image from Cloudinary" onClose={this.handleClose} isOpen>
-        {this.state.loadingMessage && (
-          <Spinner fullscreen center message={this.state.loadingMessage} />
+        {hasConfig && loadingMessage && <Spinner fullscreen center message={loadingMessage} />}
+        {hasConfig && (
+          <div
+            style={{ visibility: 'hidden' }}
+            ref={this.contentRef}
+            className={styles.widget}
+            id={`cloundinaryWidget-${this.domId}`}
+          />
         )}
-        <div
-          style={{ visibility: 'hidden' }}
-          ref={this.contentRef}
-          className={styles.widget}
-          id={`cloundinaryWidget-${this.domId}`}
-        />
+        {!hasConfig && this.renderConfigWarning()}
       </Dialog>
     )
   }
