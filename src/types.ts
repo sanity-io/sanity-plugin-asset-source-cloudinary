@@ -29,3 +29,6 @@ export interface CloudinaryMediaLibrary {
   show: (config?: { asset: any; folder: any }) => void
   hide: () => void
 }
+
+
+export type CloudinaryAssetSourceIdData = { public_id: string; resource_type: string; type: string }
