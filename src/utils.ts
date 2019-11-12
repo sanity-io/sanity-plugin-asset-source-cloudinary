@@ -20,7 +20,7 @@ export function loadCloudinary(callback: () => void) {
   return true
 }
 
-export function encodeLabel(asset: CloudinaryAsset) {
+export function encodeSourceId(asset: CloudinaryAsset) {
   const { resource_type, public_id, type } = asset
   return JSON.stringify({ resource_type, public_id, type })
 }
@@ -29,10 +29,10 @@ export function encodeFilename(asset: CloudinaryAsset) {
   return `${asset.public_id.split('/').slice(-1)[0]}.${asset.format}`
 }
 
-export function decodeLabel(label: string): CloudinaryAsset {
+export function decodeSourceId(sourceId: string): CloudinaryAsset {
   let labelDecoded
   try {
-    labelDecoded = JSON.parse(label)
+    labelDecoded = JSON.parse(sourceId)
   } catch (err) {
     // Do nothing
   }

@@ -5,7 +5,7 @@ import Spinner from 'part:@sanity/components/loading/spinner'
 import pluginConfig from 'config:asset-source-cloudinary'
 
 import { Asset, AssetDocument, CloudinaryAsset, CloudinaryMediaLibrary } from '../types'
-import { loadCloudinary, decodeLabel, encodeLabel, encodeFilename } from '../utils'
+import { loadCloudinary, decodeSourceId, encodeFilename, encodeSourceId } from '../utils'
 import styles from './CloudinaryAssetSource.css'
 
 declare global {
@@ -69,9 +69,9 @@ export default class CloudinaryAssetSource extends React.Component<Props, State>
         if (
           selectionType === 'single' &&
           firstSelectedAsset &&
-          firstSelectedAsset.label
+          firstSelectedAsset.sourceId
         ) {
-          asset = decodeLabel(firstSelectedAsset.label)
+          asset = decodeSourceId(firstSelectedAsset.sourceId)
         }
         const folder = asset
           ? {
@@ -103,9 +103,10 @@ export default class CloudinaryAssetSource extends React.Component<Props, State>
       imageAssets.map((asset: CloudinaryAsset) => ({
         kind: 'url',
         value: asset.secure_url,
-        options: {
-          label: encodeLabel(asset),
-          filename: encodeFilename(asset)
+        assetDocumentProps: {
+          originalFilename: encodeFilename(asset),
+          source: `cloudinary:${pluginConfig.cloudName}`,
+          sourceId: encodeSourceId(asset)
         }
       }))
     )
