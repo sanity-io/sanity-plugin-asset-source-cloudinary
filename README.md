@@ -6,8 +6,7 @@
 
 Edit the config file found in `./config/asset-source-cloudinary.json` with your Cloudinary Cloud name and API key.
 
-You can find these in the Cloudinary console: https://cloudinary.com/console
-
+You can find these in the Cloudinary Console: https://cloudinary.com/console
 
 ## Developing on this module
 
