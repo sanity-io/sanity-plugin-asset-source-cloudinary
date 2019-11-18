@@ -46,10 +46,7 @@ export default class CloudinaryAssetSource extends React.Component<Props, State>
 
   componentDidMount() {
     const hasConfig = !!(pluginConfig.cloudName && pluginConfig.apiKey)
-    if (hasConfig) {
-      loadCloudinary(this.setupMediaLibrary)
-    }
-    this.setState({ hasConfig })
+    this.setState({ hasConfig }, () => hasConfig && loadCloudinary(this.setupMediaLibrary))
   }
 
   private setupMediaLibrary = () => {
@@ -72,7 +69,12 @@ export default class CloudinaryAssetSource extends React.Component<Props, State>
       iframe.onload = () => {
         this.setState({ loadingMessage: null })
         let asset
-        if (selectionType === 'single' && firstSelectedAsset && firstSelectedAsset.source && firstSelectedAsset.source.id) {
+        if (
+          selectionType === 'single' &&
+          firstSelectedAsset &&
+          firstSelectedAsset.source &&
+          firstSelectedAsset.source.id
+        ) {
           asset = decodeSourceId(firstSelectedAsset.source.id)
         }
         const folder = asset
