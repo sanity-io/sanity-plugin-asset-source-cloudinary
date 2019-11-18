@@ -72,8 +72,8 @@ export default class CloudinaryAssetSource extends React.Component<Props, State>
       iframe.onload = () => {
         this.setState({ loadingMessage: null })
         let asset
-        if (selectionType === 'single' && firstSelectedAsset && firstSelectedAsset.sourceId) {
-          asset = decodeSourceId(firstSelectedAsset.sourceId)
+        if (selectionType === 'single' && firstSelectedAsset && firstSelectedAsset.source && firstSelectedAsset.source.id) {
+          asset = decodeSourceId(firstSelectedAsset.source.id)
         }
         const folder = asset
           ? {
@@ -107,8 +107,10 @@ export default class CloudinaryAssetSource extends React.Component<Props, State>
         value: asset.secure_url,
         assetDocumentProps: {
           originalFilename: encodeFilename(asset),
-          source: `cloudinary:${pluginConfig.cloudName}`,
-          sourceId: encodeSourceId(asset)
+          source: {
+            id: encodeSourceId(asset),
+            name: `cloudinary:${pluginConfig.cloudName}`
+          }
         }
       }))
     )
