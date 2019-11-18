@@ -10,7 +10,7 @@ export default function CloudinaryIcon() {
       width="1em"
       height="1em"
       viewBox="0 0 141.732 141.747"
-      enable-background="new 0 0 141.732 141.747"
+      enableBackground="new 0 0 141.732 141.747"
     >
       <g>
         <path
