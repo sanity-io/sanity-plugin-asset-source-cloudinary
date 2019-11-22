@@ -135,7 +135,7 @@ export default class CloudinaryAssetSource extends React.Component<Props, State>
           folder.
         </p>
         <p>
-          You can get your credentials by visting the{' '}
+          You can get your credentials by visiting the{' '}
           <a href="https://cloudinary.com/console" rel="noopener noreferrer" target="_blank">
             Cloudinary console
           </a>{' '}
