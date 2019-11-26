@@ -12,7 +12,7 @@ module.exports = {
   globals: {
     window: {}
   },
-  collectCoverageFrom: ['src/*.{js,ts}'],
+  collectCoverageFrom: ['src/*.{js,ts}', '!src/utils.ts'],
   moduleNameMapper: {
     ...moduleNameMapper,
     '\\.(css|less|sass|scss)$': '<rootDir>/test/__mocks__/styleMock.js'
