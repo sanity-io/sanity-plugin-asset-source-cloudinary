@@ -2,7 +2,8 @@
 
 Access and select photos from your Cloudinary account within the Sanity Studio.
 
-[![Build Status](https://travis-ci.org/sanity-io/sanity-plugin-asset-source-cloudinary.svg?branch=master)](https://travis-ci.org/sanity-io/sanity-plugin-asset-source-cloudinary
+[![Build Status](https://travis-ci.org/sanity-io/sanity-plugin-asset-source-cloudinary.svg?branch=master)](https://travis-ci.org/sanity-io/sanity-plugin-asset-source-cloudinary)
+
 
 ## Installation
 
