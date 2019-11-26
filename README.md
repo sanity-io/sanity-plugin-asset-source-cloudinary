@@ -1,4 +1,8 @@
-# Sanity Asset Source: Cloudinary
+# Sanity Asset Source Plugin: Cloudinary
+
+Access and select photos from your Cloudinary account within the Sanity Studio.
+
+[![Build Status](https://travis-ci.org/sanity-io/sanity-plugin-asset-source-cloudinary.svg?branch=master)](https://travis-ci.org/sanity-io/sanity-plugin-asset-source-cloudinary
 
 ## Installation
 
@@ -7,6 +11,13 @@
 Edit the config file found in `./config/asset-source-cloudinary.json` with your Cloudinary Cloud name and API key.
 
 You can find these in the Cloudinary Console: https://cloudinary.com/console
+
+## Part name
+
+If you need to do cusotomize available asset sources, the plugin part name for this asset source is:
+
+`part:sanity-plugin-asset-source-cloudinary/image-asset-source`
+
 
 ## Developing on this module
 
@@ -36,4 +47,5 @@ When you are done and have published your new version, you can run `npm unlink` 
 
 
 ## Futher reading
-https://cloudinary.com/documentation/media_library_widget
+* https://cloudinary.com/documentation/media_library_widget
+* https://www.sanity.io/docs/custom-asset-sources
