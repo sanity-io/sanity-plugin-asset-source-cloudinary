@@ -104,18 +104,21 @@ export default class CloudinaryAssetSource extends React.Component<Props, State>
     }
     this.library.hide()
     this.props.onSelect(
-      imageAssets.map((asset: CloudinaryAsset) => ({
-        kind: 'url',
-        value: asset.secure_url,
-        assetDocumentProps: {
-          originalFilename: encodeFilename(asset),
-          source: {
-            id: encodeSourceId(asset),
-            name: `cloudinary:${pluginConfig.cloudName}`
+      imageAssets.map((asset: CloudinaryAsset) => {
+        const url = asset.derived && asset.derived[0] ? asset.derived[0].secure_url : asset.secure_url
+        return {
+          kind: 'url',
+          value: url,
+          assetDocumentProps: {
+            originalFilename: encodeFilename(asset),
+            source: {
+              id: encodeSourceId(asset),
+              name: `cloudinary:${pluginConfig.cloudName}`
+            }
           }
         }
-      }))
-    )
+      }
+    ))
   }
 
   handleClose = () => {

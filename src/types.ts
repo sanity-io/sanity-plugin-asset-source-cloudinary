@@ -35,6 +35,7 @@ export type CloudinaryAsset = {
   resource_type: string
   type: string
   public_id: string
+  derived: { url: string; secure_url: string }[]
 }
 
 export interface CloudinaryMediaLibrary {
