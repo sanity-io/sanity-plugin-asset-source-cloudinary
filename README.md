@@ -15,7 +15,7 @@ You can find these in the Cloudinary Console: https://cloudinary.com/console
 
 ## Part name
 
-If you need to do cusotomize available asset sources, the plugin part name for this asset source is:
+If you need to customize available asset sources, the plugin part name for this asset source is:
 
 `part:sanity-plugin-asset-source-cloudinary/image-asset-source`
 
