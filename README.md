@@ -29,9 +29,6 @@ JSON.parse(atob(source.id))
 > {"public_id":"samples/cloudinary-group","resource_type":"image","type":"upload"}
 ```
 
-`public_id` is the folder name.
-If you need the public_id and See this comment: https://github.com/sanity-io/sanity-plugin-asset-source-cloudinary/issues/3#issuecomment-656554583
-
 ## Developing on this module
 
 To simulate using your development version as a real module inside a studio, you can do the following:
