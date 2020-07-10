@@ -21,7 +21,7 @@ If you need to customize available asset sources, the plugin part name for this 
 
 ## Finding back to the original asset in Cloudinary (public_id, resource_type, type)
 This info exists on the asset document, however it's base64-encoded in the `source.id` field.
-It's base64 encoded because Sanity asset-source plugins have a generic way of identifying assets (provider source name and id), and Cloudinary is a bit special needing to have three items to programatically find back to the original.
+It's base64 encoded because Sanity asset-source plugins have a generic way of identifying assets (provider name and id), and Cloudinary is a bit special needing to have three items to programatically find back to the original image, as opposed to just an id as most other sources do.
 
 ```
 JSON.parse(atob(source.id))
