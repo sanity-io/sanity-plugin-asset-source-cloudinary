@@ -19,6 +19,18 @@ If you need to customize available asset sources, the plugin part name for this 
 
 `part:sanity-plugin-asset-source-cloudinary/image-asset-source`
 
+## Finding back to the original asset in Cloudinary (public_id, resource_type, type)
+This info exists on the asset document, however it's base64-encoded in the `source.id` field.
+It's base64 encoded because Sanity asset-source plugins have a generic way of identifying assets (provider source name and id), and Cloudinary is a bit special needing to have three items to programatically find back to the original.
+
+```
+JSON.parse(atob(source.id))
+
+> {"public_id":"samples/cloudinary-group","resource_type":"image","type":"upload"}
+```
+
+`public_id` is the folder name.
+If you need the public_id and See this comment: https://github.com/sanity-io/sanity-plugin-asset-source-cloudinary/issues/3#issuecomment-656554583
 
 ## Developing on this module
 
