@@ -7,14 +7,13 @@ module.exports = {
   },
   testEnvironment: 'node',
   testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$',
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'css'],
+  moduleFileExtensions: ['ts', 'tsx', 'js'],
   coveragePathIgnorePatterns: ['/node_modules/', '/test/'],
   globals: {
     window: {}
   },
   collectCoverageFrom: ['src/*.{js,ts}', '!src/utils.ts'],
   moduleNameMapper: {
-    ...moduleNameMapper,
-    '\\.(css|less|sass|scss)$': '<rootDir>/test/__mocks__/styleMock.js'
+    ...moduleNameMapper
   }
 }
