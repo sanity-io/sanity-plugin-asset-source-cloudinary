@@ -21,7 +21,8 @@
         "./config.dist.json"
       ]
 
-    }
+    },
+    "skipLibCheck": true
   },
   "include": ["src/**/*"]
 }

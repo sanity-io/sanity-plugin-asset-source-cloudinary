@@ -36,7 +36,7 @@
   "scripts": {
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
-    "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
+    "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --ignoreCompilerErrors --out docs --target es6 --theme minimal --mode file src",
     "watch-tsc": "tsc --watch --module commonjs",
     "watch-rollup": "rollup -c rollup.config.ts -w",
     "watch": "rollup -c rollup.config.ts && run-p watch-*",
@@ -73,7 +73,7 @@
     ]
   },
   "peerDependencies": {
-    "@sanity/base": "^2.13.0",
+    "@sanity/base": ">=2.13.0",
     "@sanity/components": "^2.13.0",
     "@sanity/ui": "^0.36.12",
     "react": ">= 16.9",
@@ -82,7 +82,7 @@
   "devDependencies": {
     "@commitlint/cli": "^7.6.1",
     "@commitlint/config-conventional": "^7.6.0",
-    "@sanity/base": "^2.13.0",
+    "@sanity/base": "^2.21.5",
     "@sanity/components": "^2.13.0",
     "@sanity/types": "2.21.0",
     "@sanity/ui": "^0.36.12",
@@ -123,7 +123,7 @@
     "tslint-config-prettier": "^1.15.0",
     "tslint-config-standard": "^8.0.1",
     "typedoc": "^0.15.0",
-    "typescript": "^3.7.2"
+    "typescript": "^3.8.0"
   },
   "dependencies": {
     "@sanity/ui": "^0.36.12",
