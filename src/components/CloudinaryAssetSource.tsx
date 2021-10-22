@@ -1,12 +1,10 @@
 /* eslint-disable camelcase */
 import React from 'react'
-import Dialog from 'part:@sanity/components/dialogs/fullscreen'
-import Spinner from 'part:@sanity/components/loading/spinner'
+import { Dialog, Spinner, Stack, Flex, Text, Box, Card } from '@sanity/ui'
 import pluginConfig from 'config:asset-source-cloudinary'
-
 import { Asset, AssetDocument, CloudinaryAsset, CloudinaryMediaLibrary } from '../types'
 import { loadCloudinary, decodeSourceId, encodeFilename, encodeSourceId } from '../utils'
-import styles from './CloudinaryAssetSource.css'
+import { Widget } from './CloudinaryAssetSource.styled'
 
 declare global {
   interface Window {
@@ -130,38 +128,57 @@ export default class CloudinaryAssetSource extends React.Component<Props, State>
 
   renderConfigWarning() {
     return (
-      <div>
-        <h2>Missing configuration</h2>
-        <p>You must first configure the plugin with your Cloudinary credentials</p>
-        <p>
-          Edit the <code>./config/asset-source-cloudinary.json</code> file in your Sanity Studio
-          folder.
-        </p>
-        <p>
+      <Card tone="caution" padding={4} radius={2}>
+        <Stack space={4}>
+          <Text as="h1" weight="semibold">
+            Missing configuration
+          </Text>
+          <Text>
+            You must first configure the plugin with your Cloudinary credentials. Edit the{' '}
+            <code>./config/asset-source-cloudinary.json</code> file in your Sanity Studio folder.
+          </Text>
+          <Text>
           You can get your credentials by visiting the{' '}
           <a href="https://cloudinary.com/console" rel="noopener noreferrer" target="_blank">
             Cloudinary console
           </a>{' '}
           and get your Cloud name and API key.
-        </p>
-      </div>
+          </Text>
+        </Stack>
+      </Card>
     )
   }
 
   render() {
     const { hasConfig, loadingMessage } = this.state
     return (
-      <Dialog title="Select image from Cloudinary" onClose={this.handleClose} isOpen>
-        {hasConfig && loadingMessage && <Spinner fullscreen center message={loadingMessage} />}
+      <Dialog
+        id="cloudinary-asset-source"
+        header="Select image from Cloudinary"
+        onClose={this.handleClose}
+        open
+        width={hasConfig ? 4 : 1}
+      >
+        <Box padding={4}>
+          {hasConfig && loadingMessage && (
+            <Stack space={3}>
+              <Flex align="center" justify="center">
+                <Spinner muted />
+              </Flex>
+              <Text size={1} muted align="center">
+                {loadingMessage}
+              </Text>
+            </Stack>
+          )}
         {hasConfig && (
-          <div
+            <Widget
             style={{ visibility: 'hidden' }}
             ref={this.contentRef}
-            className={styles.widget}
             id={`cloundinaryWidget-${this.domId}`}
           />
         )}
         {!hasConfig && this.renderConfigWarning()}
+        </Box>
       </Dialog>
     )
   }
