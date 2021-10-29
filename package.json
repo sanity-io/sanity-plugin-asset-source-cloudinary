@@ -75,9 +75,9 @@
   "peerDependencies": {
     "@sanity/base": ">=2.13.0",
     "@sanity/components": "^2.13.0",
-    "@sanity/ui": "^0.36.12",
     "react": ">= 16.9",
-    "react-dom": ">= 16.2"
+    "react-dom": ">= 16.2",
+    "styled-components": "^5.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.6.1",
