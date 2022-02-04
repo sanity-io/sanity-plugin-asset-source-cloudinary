@@ -17,7 +17,7 @@ You can find these in the Cloudinary Console: https://cloudinary.com/console
 
 If you need to customize available asset sources, the plugin part name for this asset source is:
 
-`part:sanity-plugin-asset-source-cloudinary/image-asset-source`
+`part:asset-source-cloudinary/image-asset-source`
 
 ## Finding back to the original asset in Cloudinary (public_id, resource_type, type)
 This info exists on the asset document, however it's base64-encoded in the `source.id` field.
