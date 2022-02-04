@@ -1,6 +1,6 @@
 {
   "name": "sanity-plugin-asset-source-cloudinary",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Sanity Studio plugin for using Cloudinary to select images from",
   "keywords": [
     "sanity",
