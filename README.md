@@ -1,5 +1,11 @@
 # Sanity Asset Source Plugin: Cloudinary
 
+> This is a **Sanity Studio v2** plugin. 
+>
+> For the Sanity Studio v3 equivalent, please refer to the v3 version of [sanity-plugin-cloudinary](https://github.com/sanity-io/sanity-plugin-cloudinary/). 
+> 
+> Cloudinary asset source is available there.
+
 Access and select photos from your Cloudinary account within the Sanity Studio.
 
 [![Build Status](https://travis-ci.org/sanity-io/sanity-plugin-asset-source-cloudinary.svg?branch=master)](https://travis-ci.org/sanity-io/sanity-plugin-asset-source-cloudinary)
