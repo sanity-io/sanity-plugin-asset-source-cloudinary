@@ -82,7 +82,7 @@
   "devDependencies": {
     "@commitlint/cli": "^7.6.1",
     "@commitlint/config-conventional": "^7.6.0",
-    "@sanity/base": "^2.21.5",
+    "@sanity/base": "^2.30.3",
     "@sanity/components": "^2.13.0",
     "@sanity/types": "2.21.0",
     "@sanity/ui": "^0.36.12",
@@ -127,6 +127,6 @@
   },
   "dependencies": {
     "@sanity/ui": "^0.36.12",
-    "styled-components": "^5.2.0"
+    "styled-components": "^6.1.0"
   }
 }
